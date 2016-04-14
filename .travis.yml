@@ -15,7 +15,9 @@ addons:
 
 before_script:
   - npm install -g mocha standard
-  - npm test
   - aria2c -v
+
+script:
+  - npm test
   - aria2c --enable-rpc --rpc-listen-all=true --rpc-allow-origin-all --daemon
   - npm run integration
