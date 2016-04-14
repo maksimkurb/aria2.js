@@ -8,5 +8,13 @@ node_js:
   - '4'
   - '5'
 
+addons:
+  apt:
+    packages:
+    - aria2
+
 before_script:
   - npm install -g mocha standard
+  - npm test
+  - aria2c --enable-rpc --rpc-listen-all=true --rpc-allow-origin-all --daemon
+  - npm run integration
