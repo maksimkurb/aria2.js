@@ -16,6 +16,6 @@ addons:
 before_script:
   - npm install -g mocha standard
   - npm test
-  - nohup aria2c --enable-rpc --rpc-listen-all=true --rpc-allow-origin-all &
+  - aria2c -v
+  - aria2c --enable-rpc --rpc-listen-all=true --rpc-allow-origin-all --daemon
   - npm run integration
-  - cat nohup.out
