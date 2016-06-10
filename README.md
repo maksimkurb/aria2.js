@@ -94,6 +94,8 @@ or
 ```xml
 <!-- optional for HTTP/JSONP support -->
 <script src="node_modules/httpclient/bundle.js"></script>
+
+<script src="//cdn.jsdelivr.net/sockjs/1/sockjs.min.js"></script>
 <script src="node_modules/aria2/bundle.js"></script>
 ```
 ```javascript
