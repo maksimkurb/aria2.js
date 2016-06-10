@@ -1,7 +1,7 @@
 ;(function (global) {
   'use strict'
 
-  var WebSocket
+  var SockJS
   var b64
   var httpclient
   var pg
@@ -11,14 +11,14 @@
   }
 
   if (isNode()) {
-    WebSocket = require('ws')
+    SockJS = require('sockjs-client')
     b64 = function (str) {
       return new Buffer(str).toString('base64')
     }
     httpclient = require('httpclient')
     pg = require('polygoat')
   } else {
-    WebSocket = global.WebSocket
+    SockJS = global.SockJS
     b64 = global.atob
     httpclient = global.HTTPClient
     pg = global.polygoat
@@ -142,8 +142,8 @@
   }
 
   Aria2.prototype.open = function (fn) {
-    var url = 'ws' + (this.secure ? 's' : '') + '://' + this.host + ':' + this.port + this.path
-    var socket = this.socket = new WebSocket(url)
+    var url = 'http' + (this.secure ? 's' : '') + '://' + this.host + ':' + this.port + '/' + this.path
+    var socket = this.socket = new SockJS(url)
     var that = this
     var called = false
 
